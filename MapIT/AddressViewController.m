@@ -55,8 +55,8 @@
                                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                NSDictionary *firstResult = [responseDictionary objectForKey:@"results"][0];
                                NSDictionary *locationDictionary = [[firstResult objectForKey:@"geometry"] objectForKey:@"location"];
+                               addressTextField.text = nil;
                                [self.delegate displayLocation:locationDictionary];
-                               [self dismissViewControllerAnimated:YES completion:nil];
                            }];
 
 }

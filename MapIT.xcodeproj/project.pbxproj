@@ -45,6 +45,7 @@
 		9CB51169174AAEE400505DAE /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		9CB5116A174AAEE400505DAE /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		9CB5116C174AB07500505DAE /* LocationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDelegate.h; sourceTree = "<group>"; };
+		9CB5116D174ABA1400505DAE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 		9CB5113E174A874C00505DAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CB5116D174ABA1400505DAE /* QuartzCore.framework */,
 				9CB51164174A87DC00505DAE /* MapKit.framework */,
 				9CB51162174A87D600505DAE /* CoreLocation.framework */,
 				9CB5113F174A874C00505DAE /* UIKit.framework */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -12,34 +12,55 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vxw-f4-Qjy">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="591" id="5an-0H-yY8"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Vxw-f4-Qjy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="635"/>
                             </mapView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ps-6n-gqM">
-                                <items>
-                                    <navigationItem title="Map It!" id="Iup-kJ-o6k">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Ri-xB-YUU">
-                                            <connections>
-                                                <segue destination="fIe-7q-SI7" kind="modal" id="78p-u3-c0f"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="sLW-aG-aHA">
+                                <rect key="frame" x="20" y="499" width="98" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="St"/>
+                                    <segment title="Sl"/>
+                                    <segment title="H"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMapType:" destination="2" eventType="valueChanged" id="ViQ-0c-sfP"/>
+                                </connections>
+                            </segmentedControl>
+                            <view alpha="0.0" contentMode="scaleToFill" id="Dqy-O4-L4c">
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="566"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <containerView alpha="0.0" contentMode="scaleToFill" id="LFd-67-3bd">
+                                <rect key="frame" x="20" y="111" width="280" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="U4d-3c-yWS" kind="embed" id="cOa-O0-4gX"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="1Bd-Wo-SKk">
+                                <rect key="frame" x="286" y="6" width="29" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAddressWithButton:" destination="2" eventType="touchUpInside" id="mGW-OC-gST"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8ps-6n-gqM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="MOx-ZD-oOe"/>
-                            <constraint firstItem="Vxw-f4-Qjy" firstAttribute="top" secondItem="8ps-6n-gqM" secondAttribute="bottom" type="default" id="RFs-MC-yCi"/>
-                            <constraint firstItem="8ps-6n-gqM" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="SLC-Wb-zEu"/>
-                            <constraint firstItem="8ps-6n-gqM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="aax-8P-vdy"/>
-                            <constraint firstItem="Vxw-f4-Qjy" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="v4J-1E-QPR"/>
-                            <constraint firstItem="Vxw-f4-Qjy" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="z6T-yb-4xa"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="LFd-67-3bd" id="LUo-iN-6H0"/>
+                        <outlet property="dimmerView" destination="Dqy-O4-L4c" id="kzJ-v4-YyL"/>
                         <outlet property="mapView" destination="Vxw-f4-Qjy" id="7D2-pq-bcP"/>
                     </connections>
                 </viewController>
@@ -47,23 +68,29 @@
             </objects>
         </scene>
         <!--Address View Controller-->
-        <scene sceneID="bRw-iJ-j3B">
+        <scene sceneID="vk1-3H-X1m">
             <objects>
-                <viewController id="fIe-7q-SI7" customClass="AddressViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MSa-NG-OMp">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <viewController id="U4d-3c-yWS" customClass="AddressViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fxo-q2-Xz9">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="159"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 223 W. Erie, Chicago, IL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P89-sR-sMU">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmM-vH-HwX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gr6-LU-YGh">
+                                <rect key="frame" x="109" y="26" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdS-Ob-73h">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 223 W. Erie St, Chicago, IL" minimumFontSize="17" id="HX9-dZ-hKO">
+                                <rect key="frame" x="20" y="65" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t3O-7G-IGD">
+                                <rect key="frame" x="104" y="103" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Map It!">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,28 +100,20 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="mapItWithButton:" destination="fIe-7q-SI7" eventType="touchUpInside" id="dWU-oY-i3A"/>
+                                    <action selector="mapItWithButton:" destination="U4d-3c-yWS" eventType="touchUpInside" id="O3I-lP-9DG"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cmM-vH-HwX" firstAttribute="top" secondItem="MSa-NG-OMp" secondAttribute="top" constant="45" id="3p6-CQ-aDf"/>
-                            <constraint firstItem="P89-sR-sMU" firstAttribute="top" secondItem="MSa-NG-OMp" secondAttribute="top" constant="113" id="MhR-E1-SrC"/>
-                            <constraint firstAttribute="trailing" secondItem="P89-sR-sMU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YRS-C1-2pc"/>
-                            <constraint firstItem="P89-sR-sMU" firstAttribute="leading" secondItem="MSa-NG-OMp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZnX-Es-q32"/>
-                            <constraint firstItem="cmM-vH-HwX" firstAttribute="centerX" secondItem="P89-sR-sMU" secondAttribute="centerX" type="default" id="chv-ZB-Wdf"/>
-                            <constraint firstItem="CdS-Ob-73h" firstAttribute="top" secondItem="MSa-NG-OMp" secondAttribute="top" constant="175" id="dvt-yL-UI5"/>
-                            <constraint firstItem="CdS-Ob-73h" firstAttribute="centerX" secondItem="P89-sR-sMU" secondAttribute="centerX" type="default" id="g4R-Rt-7XS"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <connections>
-                        <outlet property="addressTextField" destination="P89-sR-sMU" id="Lyy-HH-NNR"/>
+                        <outlet property="addressTextField" destination="HX9-dZ-hKO" id="HnP-B6-rzc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gzN-Gu-wLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X2Z-JL-vGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="33"/>
+            <point key="canvasLocation" x="629" y="129"/>
         </scene>
     </scenes>
     <classes>
@@ -105,14 +124,13 @@
                 <relationship kind="outlet" name="addressTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="mapLocationWithButton:"/>
-                <relationship kind="outlet" name="addressTextField" candidateClass="UITextField"/>
+                <relationship kind="action" name="addAddressWithButton:"/>
+                <relationship kind="action" name="changeMapType:"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dimmerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
