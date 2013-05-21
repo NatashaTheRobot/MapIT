@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "LocationDelegate.h"
+#import "SettingsDelegate.h"
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, LocationDelegate>
+@interface ViewController : UIViewController <CLLocationManagerDelegate, LocationDelegate, SettingsDelegate, UIGestureRecognizerDelegate>
 
 @end

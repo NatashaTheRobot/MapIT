@@ -9,12 +9,15 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
 #import "AddressViewController.h"
+#import "SettingsViewController.h"
 
 @interface ViewController ()
 {
     __weak IBOutlet MKMapView *mapView;
     __weak IBOutlet UIView *containerView;
     __weak IBOutlet UIView *dimmerView;
+    
+    NSMutableDictionary *addressesWithGestures;
     
 }
 
@@ -23,6 +26,10 @@
 
 - (IBAction)addAddressWithButton:(id)sender;
 - (IBAction)changeMapType:(id)sender;
+
+- (void)gestureRight:(id)sender;
+- (void)gestureLeft:(id)sender;
+- (void)gestureDown:(id)sender;
 
 @end
 
@@ -89,7 +96,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ((AddressViewController *)segue.destinationViewController).delegate = self;
+    if ([segue.destinationViewController isKindOfClass:[SettingsViewController class]] ) {
+        
+        ((SettingsViewController *)segue.destinationViewController).delegate = self;
+        
+    } else if ([segue.destinationViewController isKindOfClass:[AddressViewController class]]) {
+        
+        ((AddressViewController *)segue.destinationViewController).delegate = self;
+        
+    }
+    
 }
 
 - (void)displayLocation:(NSDictionary *)locationDictionary
@@ -122,5 +138,76 @@
     }
     
 }
+
+#pragma mark - Gesture Recognizers
+
+- (void)setLocationsForGestures:(NSMutableDictionary *)addresses
+{
+    addressesWithGestures = addresses;
+    
+    NSArray *gestureDirections = @[@"right", @"left", @"up", @"down"];
+    NSArray *selectors = @[@"gestureRight:", @"gestureLeft:", @"gestureUp:", @"gestureDown:"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:selectors forKeys:gestureDirections];
+    
+    for (NSString *direction in gestureDirections) {
+        if ([addresses objectForKey:direction] ) {
+            NSString *selectorName = [dictionary objectForKey:direction];
+            UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:(NSSelectorFromString(selectorName))];
+            recognizer.delegate = self;
+            
+            [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+            
+            
+            [mapView addGestureRecognizer:recognizer];
+        }
+    }
+    
+}
+
+- (void)gestureRight:(id)sender
+{
+    [self pinLocationForAddressGesture:@"right"];
+}
+
+- (void)gestureLeft:(id)sender
+{
+    [self pinLocationForAddressGesture:@"left"];
+}
+
+- (void)gestureUp:(id)sender
+{
+    [self pinLocationForAddressGesture:@"up"];
+}
+
+- (void)gestureDown:(id)sender
+{
+    [self pinLocationForAddressGesture:@"down"];
+}
+
+- (void)pinLocationForAddressGesture:(NSString *)gestureDirection
+{
+    NSString *googleMapApiString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=false", [addressesWithGestures objectForKey:gestureDirection]];
+    NSString *encodedURLString = [googleMapApiString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:encodedURLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                               NSDictionary *firstResult = [responseDictionary objectForKey:@"results"][0];
+                               NSDictionary *locationDictionary = [[firstResult objectForKey:@"geometry"] objectForKey:@"location"];
+                               mapView.centerCoordinate = CLLocationCoordinate2DMake([[locationDictionary objectForKey:@"lat"] floatValue],
+                                                                                     [[locationDictionary objectForKey:@"lng"] floatValue]);
+                               [self addPinToLocation:mapView.centerCoordinate];
+                           }];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    otherGestureRecognizer.enabled = FALSE;
+    return YES;
+}
+
 
 @end

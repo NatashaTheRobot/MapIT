@@ -21,6 +21,7 @@
 		9CB51163174A87D600505DAE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB51162174A87D600505DAE /* CoreLocation.framework */; };
 		9CB51165174A87DC00505DAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB51164174A87DC00505DAE /* MapKit.framework */; };
 		9CB5116B174AAEE400505DAE /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB5116A174AAEE400505DAE /* AddressViewController.m */; };
+		9CB51175174AD25E00505DAE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB51173174AD25E00505DAE /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,9 @@
 		9CB5116A174AAEE400505DAE /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		9CB5116C174AB07500505DAE /* LocationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDelegate.h; sourceTree = "<group>"; };
 		9CB5116D174ABA1400505DAE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9CB51172174ACCCE00505DAE /* SettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsDelegate.h; sourceTree = "<group>"; };
+		9CB51173174AD25E00505DAE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		9CB51174174AD25E00505DAE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,9 @@
 				9CB51169174AAEE400505DAE /* AddressViewController.h */,
 				9CB5116A174AAEE400505DAE /* AddressViewController.m */,
 				9CB5116C174AB07500505DAE /* LocationDelegate.h */,
+				9CB51172174ACCCE00505DAE /* SettingsDelegate.h */,
+				9CB51174174AD25E00505DAE /* SettingsViewController.h */,
+				9CB51173174AD25E00505DAE /* SettingsViewController.m */,
 				9CB51146174A874C00505DAE /* Supporting Files */,
 			);
 			path = MapIT;
@@ -194,6 +201,7 @@
 				9CB51150174A874C00505DAE /* AppDelegate.m in Sources */,
 				9CB5115C174A874C00505DAE /* ViewController.m in Sources */,
 				9CB5116B174AAEE400505DAE /* AddressViewController.m in Sources */,
+				9CB51175174AD25E00505DAE /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
