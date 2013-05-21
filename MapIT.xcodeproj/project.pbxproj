@@ -22,6 +22,7 @@
 		9CB51165174A87DC00505DAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB51164174A87DC00505DAE /* MapKit.framework */; };
 		9CB5116B174AAEE400505DAE /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB5116A174AAEE400505DAE /* AddressViewController.m */; };
 		9CB51175174AD25E00505DAE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB51173174AD25E00505DAE /* SettingsViewController.m */; };
+		9CB51178174BBAE900505DAE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5116D174ABA1400505DAE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB51178174BBAE900505DAE /* QuartzCore.framework in Frameworks */,
 				9CB51165174A87DC00505DAE /* MapKit.framework in Frameworks */,
 				9CB51163174A87D600505DAE /* CoreLocation.framework in Frameworks */,
 				9CB51140174A874C00505DAE /* UIKit.framework in Frameworks */,
@@ -108,10 +110,10 @@
 				9CB5115B174A874C00505DAE /* ViewController.m */,
 				9CB51169174AAEE400505DAE /* AddressViewController.h */,
 				9CB5116A174AAEE400505DAE /* AddressViewController.m */,
-				9CB5116C174AB07500505DAE /* LocationDelegate.h */,
-				9CB51172174ACCCE00505DAE /* SettingsDelegate.h */,
 				9CB51174174AD25E00505DAE /* SettingsViewController.h */,
 				9CB51173174AD25E00505DAE /* SettingsViewController.m */,
+				9CB5116C174AB07500505DAE /* LocationDelegate.h */,
+				9CB51172174ACCCE00505DAE /* SettingsDelegate.h */,
 				9CB51146174A874C00505DAE /* Supporting Files */,
 			);
 			path = MapIT;

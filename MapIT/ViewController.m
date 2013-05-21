@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "AddressViewController.h"
 #import "SettingsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 {
@@ -30,6 +31,10 @@
 - (void)gestureRight:(id)sender;
 - (void)gestureLeft:(id)sender;
 - (void)gestureDown:(id)sender;
+- (void)gestureUp:(id)sender;
+
+- (void)pinLocationForAddressGesture:(NSString *)gestureDirection;
+
 
 @end
 
@@ -51,6 +56,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self displayInitialLocation];
+    containerView.layer.cornerRadius = 10;
+    containerView.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning
